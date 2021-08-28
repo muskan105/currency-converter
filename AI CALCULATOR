@@ -1,0 +1,131 @@
+{
+  "nbformat": 4,
+  "nbformat_minor": 0,
+  "metadata": {
+    "colab": {
+      "name": "Untitled16.ipynb",
+      "provenance": [],
+      "toc_visible": true,
+      "authorship_tag": "ABX9TyNv40jeho4Q1VMak1gBExuo",
+      "include_colab_link": true
+    },
+    "kernelspec": {
+      "name": "python3",
+      "display_name": "Python 3"
+    },
+    "language_info": {
+      "name": "python"
+    }
+  },
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "view-in-github",
+        "colab_type": "text"
+      },
+      "source": [
+        "<a href=\"https://colab.research.google.com/github/muskan105/currency-converter/blob/main/AI%20CALCULATOR\" target=\"_parent\"><img src=\"https://colab.research.google.com/assets/colab-badge.svg\" alt=\"Open In Colab\"/></a>"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "RPAXx6V6PU5X"
+      },
+      "source": [
+        ""
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "wiLwJzQsPYxW"
+      },
+      "source": [
+        "AI CALCULATER"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "sDl3pqNLQJKF",
+        "outputId": "d1c56ccb-ecf6-4f9a-ee05-de2307feef47"
+      },
+      "source": [
+        "pip install chatterbot"
+      ],
+      "execution_count": 4,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "text": [
+            "Requirement already satisfied: chatterbot in /usr/local/lib/python3.7/dist-packages (1.0.8)\n",
+            "Requirement already satisfied: mathparse<0.2,>=0.1 in /usr/local/lib/python3.7/dist-packages (from chatterbot) (0.1.2)\n",
+            "Requirement already satisfied: pytz in /usr/local/lib/python3.7/dist-packages (from chatterbot) (2018.9)\n",
+            "Requirement already satisfied: python-dateutil<2.9,>=2.8 in /usr/local/lib/python3.7/dist-packages (from chatterbot) (2.8.2)\n",
+            "Requirement already satisfied: sqlalchemy<1.4,>=1.3 in /usr/local/lib/python3.7/dist-packages (from chatterbot) (1.3.24)\n",
+            "Requirement already satisfied: six>=1.5 in /usr/local/lib/python3.7/dist-packages (from python-dateutil<2.9,>=2.8->chatterbot) (1.15.0)\n"
+          ],
+          "name": "stdout"
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "EAZ9TqYjQTE3",
+        "outputId": "d26b47c0-d102-444f-e287-5afaec278aa6"
+      },
+      "source": [
+        "from chatterbot import ChatBot\n",
+        "#naming the chatterbot calculation\n",
+        "#using mathematical evalution logic\n",
+        "#the calculator AI will not learn with the user input\n",
+        "Bot =ChatBot(name = 'Calculator',\n",
+        "             read_only = True,\n",
+        "             logic_adapters = [\"chatterbot.logic.MathematicalEvaluation\"],\n",
+        "             storage_adapter = \"chatterbot.storage.SQLStorageAdapter\")\n",
+        "\n",
+        "#clear the screen and start the calculator\n",
+        "print('\\033c')\n",
+        "print(\"Hello. I am a calculator. How may I help you?\")\n",
+        "while (True):\n",
+        "     #take the input from user\n",
+        "     user_input = input(\"me: \")\n",
+        "\n",
+        "     #check if the user has typed quit to exit the program\n",
+        "     if user_input.lower() == 'quit':\n",
+        "       print(\"Existing\")\n",
+        "       break\n",
+        "\n",
+        "       #otherwise, evalute the user input\n",
+        "       #print invalid input if the AI is unable to comprehend the input\n",
+        "     try:\n",
+        "       response = Bot.get_response(user_input)\n",
+        "       print(\"Calculator:\", response)\n",
+        "     except:\n",
+        "       print(\"Calculator: Please enter valid input.\")    \n"
+      ],
+      "execution_count": null,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "text": [
+            "\u001bc\n",
+            "Hello. I am a calculator. How may I help you?\n",
+            "me: what is two plus 24?\n",
+            "Calculator: two plus 24 = 26\n"
+          ],
+          "name": "stdout"
+        }
+      ]
+    }
+  ]
+}
